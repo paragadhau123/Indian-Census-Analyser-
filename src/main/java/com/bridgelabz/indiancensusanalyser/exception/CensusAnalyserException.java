@@ -4,7 +4,7 @@ public class CensusAnalyserException extends Exception {
     public ExceptionType type;
 
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM, WRONG_FILE_TYPE
+        CENSUS_FILE_PROBLEM, WRONG_FILE_TYPE, RUN_TIME_EXCEPTION
     }
 
 
