@@ -1,4 +1,5 @@
 package com.bridgelabz.indiancensusanalyser.model;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class IndiaCensusCSV {
