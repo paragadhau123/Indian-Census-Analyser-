@@ -1,4 +1,4 @@
-package com.bridgelabz.indiancensusanalyser.utility;
+package com.bridgelabz.indiancensusanalyser.opencsvbuilder;
 
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.opencsv.bean.CsvToBean;
