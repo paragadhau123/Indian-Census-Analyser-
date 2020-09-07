@@ -2,6 +2,7 @@ package com.bridgelabz.indiancensusanalyser.service;
 
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
+import com.bridgelabz.indiancensusanalyser.model.IndiaStateCodeCSV;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -37,12 +38,12 @@ public class CensusAnalyser {
     public int loadStateCode(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            CsvToBeanBuilder<IndiaCensusCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
-            csvToBeanBuilder.withType(IndiaCensusCSV.class);
+            CsvToBeanBuilder<IndiaStateCodeCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
+            csvToBeanBuilder.withType(IndiaStateCodeCSV.class);
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true).withSeparator(',');
-            CsvToBean<IndiaCensusCSV> csvToBean = csvToBeanBuilder.build();
-            Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator();
-            Iterable<IndiaCensusCSV> csvIterable = () -> censusCSVIterator;
+            CsvToBean<IndiaStateCodeCSV> csvToBean = csvToBeanBuilder.build();
+            Iterator<IndiaStateCodeCSV> stateCodeCSVIterator  = csvToBean.iterator();
+            Iterable<IndiaStateCodeCSV> csvIterable = () -> stateCodeCSVIterator  ;
             int numOfEateries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
             return numOfEateries;
         } catch (RuntimeException e) {
