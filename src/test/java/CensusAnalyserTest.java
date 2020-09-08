@@ -1,10 +1,10 @@
-
 import com.bridgelabz.censusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.censusanalyser.main.CensusAnalyser;
+import com.bridgelabz.censusanalyser.model.IndiaCensusCSV;
+import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 
 public class CensusAnalyserTest {
 
@@ -143,5 +143,19 @@ public class CensusAnalyserTest {
             System.out.println(e.getMessage());
             Assert.assertEquals("Error capturing CSV header!", e.getMessage());
         }
+    }
+
+    @Test
+    public void givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedCensusData = censusAnalyser.getStateWiseSortedCensusData();
+            IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
+            Assert.assertEquals("Andhra Pradesh", censusCSV[0].state);
+        } catch (CensusAnalyserException e) {
+
+        }
+
     }
 }
