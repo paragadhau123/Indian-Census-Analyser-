@@ -51,15 +51,26 @@ public class CensusAnalyser {
                     e.type.name());
         }
     }
+
     public String getStateWiseSortedCensusData() throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0) {
-            throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
         Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.state);
         this.sort(censusCSVComparator);
         String sortedStateCensus = new Gson().toJson(censusCSVList);
         return sortedStateCensus;
 
+    }
+
+    public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.population);
+        this.sort(censusCSVComparator);
+        String sortedStateCensus = new Gson().toJson(censusCSVList);
+        return sortedStateCensus;
     }
 
     private void sort(Comparator<IndiaCensusCSV> censusCSVComparator) {
