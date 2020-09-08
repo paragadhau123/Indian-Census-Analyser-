@@ -1,6 +1,5 @@
-package com.bridgelabz.indiancensusanalyser.service;
 
-import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
+import com.bridgelabz.censusanalyser.exception.CensusAnalyserException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

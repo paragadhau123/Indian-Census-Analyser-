@@ -1,4 +1,4 @@
-package com.bridgelabz.indiancensusanalyser.model;
+package com.bridgelabz.censusanalyser.model;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -17,7 +17,7 @@ public class IndiaCensusCSV {
 
     @Override
     public String toString() {
-        return "IndiaCensusCSV{" +
+        return "com.bridgelabz.censusanalyser.model.IndiaCensusCSV{" +
                 "State='" + state + '\'' +
                 ", Population='" + population + '\'' +
                 ", AreaInSqKm='" + areaInSqKm + '\'' +

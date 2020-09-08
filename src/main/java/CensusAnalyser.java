@@ -1,11 +1,6 @@
-package com.bridgelabz.indiancensusanalyser.service;
-
-import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
-import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
-import com.bridgelabz.indiancensusanalyser.model.IndiaStateCodeCSV;
-import com.bridgelabz.indiancensusanalyser.opencsvbuilder.CSVBuilderException;
-import com.bridgelabz.indiancensusanalyser.opencsvbuilder.CSVBuilderFactory;
-import com.bridgelabz.opencsvbuilder.ICSVBuilder;
+import com.bridgelabz.censusanalyser.exception.CensusAnalyserException;
+import com.bridgelabz.censusanalyser.model.IndiaCensusCSV;
+import com.bridgelabz.censusanalyser.model.IndiaStateCodeCSV;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -33,7 +28,7 @@ public class CensusAnalyser {
     }
 
     public int loadStateCode(String csvFilePath) throws CensusAnalyserException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaStateCodeCSV> stateCodeCSVIterator = csvBuilder.getCSVFileIterator(reader, IndiaStateCodeCSV.class);
             return this.getCount(stateCodeCSVIterator);
@@ -47,6 +42,7 @@ public class CensusAnalyser {
                     e.type.name());
         }
     }
+
     private <E> int getCount(Iterator<E> iterator) {
         Iterable<E> csvIterable = () -> iterator;
         return (int) StreamSupport.stream(csvIterable.spliterator(), false).count();

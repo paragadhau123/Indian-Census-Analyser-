@@ -1,4 +1,4 @@
-package com.bridgelabz.indiancensusanalyser.model;
+package com.bridgelabz.censusanalyser.model;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -17,7 +17,7 @@ public class IndiaStateCodeCSV {
 
     @Override
     public String toString() {
-        return "IndiaStateCodeCSV{" +
+        return "com.bridgelabz.censusanalyser.model.IndiaStateCodeCSV{" +
                 "srNo='" + srNo + '\'' +
                 ", stateName=" + stateName +
                 ", tin=" + tin +
