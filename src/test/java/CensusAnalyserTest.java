@@ -168,8 +168,8 @@ public class CensusAnalyserTest {
 
     @Test
     public void givenIndianCensusData_WhenSortedOnStatepopulation_ShouldReturnSortedResult() {
-        final String INDIA_CENSUS_CSV_FILE_PATH = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\" +
-                "src\\test\\resources\\IndiaStateCensusData.csv";
+        final String INDIA_CENSUS_CSV_FILE_PATH = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\"
+        +"src\\test\\resources\\SortedPopulation.json";
         try {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
@@ -177,7 +177,20 @@ public class CensusAnalyserTest {
             IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals("607688", censusCSV[0].state);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenIndianCensusData_WhenSortedOnReversedPopulation_ShouldReturnSortedResult() {
+        final String INDIA_CENSUS_CSV_FILE_PATH = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\"
+        +"src\\test\\resources\\ReversedSortedPopulation.json";
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedCensusData = censusAnalyser.getReversedPopulationWiseSortedCensusData();
+            IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
+            Assert.assertEquals("Sikkim", censusCSV[0].state);
+        } catch (CensusAnalyserException e) {
+
         }
     }
 
