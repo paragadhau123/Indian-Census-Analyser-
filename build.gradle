@@ -14,4 +14,8 @@ dependencies {
 }
 dependencies {
     compile "com.opencsv:opencsv:4.0"
+
+}
+dependencies {
+    compile(files("D:\\parag\\Fellowship\\CSV-Builder\\out\\artifacts\\CSV_Builder_jar\\CSV-Builder.jar"))
 }

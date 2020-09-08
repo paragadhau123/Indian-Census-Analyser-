@@ -1,0 +1,11 @@
+2.\src\test\resources\IndiaStateCensusData.hkkhki
+žcom.opencsv.exceptions.CsvRequiredFieldEmptyException: The following required fields were not present for one record of the input: areaInSqKm densityPerSqKm
+Error capturing CSV header!
+ java.lang.NullPointerException
+/.\src\main\resources\IndiaStateCensusData.csv
+Error capturing CSV header!
+2.\src\test\resources\IndiaStateCensusData.hkkhki
+	“com.opencsv.exceptions.CsvRequiredFieldEmptyException: The following required fields were not present for one record of the input: densityPerSqKm
+
+ java.lang.NullPointerException
+/.\src\main\resources\IndiaStateCensusData.csv
