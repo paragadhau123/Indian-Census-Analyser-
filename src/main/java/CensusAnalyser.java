@@ -13,10 +13,8 @@ import java.util.List;
 
 public class CensusAnalyser {
     private static final String SORTED_STATE_JSON = "./sortedStateCensus.json";
-    private static final String REVERSED_POPULATION_JSON = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\"
-            + "src\\test\\resources\\ReversedSortedPopulation.json";
-    private static final String SORTED_POPULATION_JSON = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\"
-            + "src\\test\\resources\\SortedPopulation.json";
+    private static final String SORTED_POPULATION_JSON = "./sortedPopulationCensus.json";
+    private static final String REVERSED_POPULATION_JSON = "./reversedPopulationCensus.json";
     private static final String REVERSED_AREA_JSON = "./reversedAreaCensus.json";
     List<IndiaCensusCSV> censusCSVList = null;
     List<IndiaStateCodeCSV> stateCodeCSVList = null;
@@ -53,7 +51,7 @@ public class CensusAnalyser {
                     e.type.name());
         }
     }
-
+    //Sorting census data in ascending order by state//
     public String getStateWiseSortedCensusData() throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0) {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
@@ -65,7 +63,7 @@ public class CensusAnalyser {
         return sortedStateCensus;
 
     }
-
+    //Sorting census data in ascending order by population//
     public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0) {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
@@ -76,7 +74,7 @@ public class CensusAnalyser {
         this.jsonWriter(sortedStateCensus, SORTED_POPULATION_JSON);
         return sortedStateCensus;
     }
-
+    //Sorting census data in descending order by population//
     public String getReversedPopulationWiseSortedCensusData() throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0) {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
@@ -87,7 +85,17 @@ public class CensusAnalyser {
         this.jsonWriter(sortedStateCensus, REVERSED_POPULATION_JSON);
         return sortedStateCensus;
     }
-
+    //Sorting census data in descending order by area//
+    public String getReversedAreaWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.areaInSqKm);
+        this.sort(censusCSVComparator.reversed());
+        String sortedStateCensus = new Gson().toJson(censusCSVList);
+        this.jsonWriter(sortedStateCensus,REVERSED_AREA_JSON);
+        return sortedStateCensus;
+    }
     public void jsonWriter(String jsonString, String filePath) throws CensusAnalyserException {
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(jsonString);
@@ -97,7 +105,6 @@ public class CensusAnalyser {
                     .JSON_WRITE_ERROR);
         }
     }
-
     private void sort(Comparator<IndiaCensusCSV> censusCSVComparator) {
         for (int i = 0; i < censusCSVList.size() - 1; i++) {
             for (int j = 0; j < censusCSVList.size() - i - 1; j++) {
