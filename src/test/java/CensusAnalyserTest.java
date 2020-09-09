@@ -1,5 +1,4 @@
 import com.bridgelabz.censusanalyser.exception.CensusAnalyserException;
-import com.bridgelabz.censusanalyser.main.CensusAnalyser;
 import com.bridgelabz.censusanalyser.model.IndiaCensusCSV;
 import com.google.gson.Gson;
 import org.junit.Assert;
