@@ -9,7 +9,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class CensusAnalyserTest {
-    private final String INDIA_CENSUS_CSV_FILE_PATH = "D:\\parag\\Fellowship\\Indian-Census-Analyser-\\src\\test\\resources\\IndiaStateCensusData.csv";
+    private final String INDIA_CENSUS_CSV_FILE_PATH = "D:\\parag\\Fellowship\\"
+        +"Indian-Census-Analyser-\\src\\test\\resources\\IndiaStateCensusData.csv";
     private final String INDIA_CENSUS_CSV_FILE_PATH_FOR_STATE_CODE = "D:\\fellowship\\" +
             "Day7-Census-Analyser-\\src\\test\\resources\\IndiaStatesCodes.csv";
 
