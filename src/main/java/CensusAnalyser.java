@@ -16,11 +16,12 @@ public class CensusAnalyser {
     private static final String SORTED_POPULATION_JSON = "./sortedPopulationCensus.json";
     private static final String REVERSED_POPULATION_JSON = "./reversedPopulationCensus.json";
     private static final String REVERSED_AREA_JSON = "./reversedAreaCensus.json";
+    private static final String REVERSED_DENSITY_JSON="./reversedDensityCensus.json";
     List<IndiaCensusCSV> censusCSVList = null;
     List<IndiaStateCodeCSV> stateCodeCSVList = null;
 
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             censusCSVList = csvBuilder.getCSVFileList(reader, IndiaCensusCSV.class);
             return censusCSVList.size();
@@ -70,9 +71,9 @@ public class CensusAnalyser {
         }
         Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.population);
         this.sort(censusCSVComparator.reversed());
-        String sortedStateCensus = new Gson().toJson(censusCSVList);
-        this.jsonWriter(sortedStateCensus, SORTED_POPULATION_JSON);
-        return sortedStateCensus;
+        String sortedPopulationCensus = new Gson().toJson(censusCSVList);
+        this.jsonWriter(sortedPopulationCensus, SORTED_POPULATION_JSON);
+        return sortedPopulationCensus;
     }
     //Sorting census data in descending order by population//
     public String getReversedPopulationWiseSortedCensusData() throws CensusAnalyserException {
@@ -81,9 +82,9 @@ public class CensusAnalyser {
         }
         Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.population);
         this.sort(censusCSVComparator);
-        String sortedStateCensus = new Gson().toJson(censusCSVList);
-        this.jsonWriter(sortedStateCensus, REVERSED_POPULATION_JSON);
-        return sortedStateCensus;
+        String reversedPopulationCensus = new Gson().toJson(censusCSVList);
+        this.jsonWriter(reversedPopulationCensus, REVERSED_POPULATION_JSON);
+        return reversedPopulationCensus;
     }
     //Sorting census data in descending order by area//
     public String getReversedAreaWiseSortedCensusData() throws CensusAnalyserException {
@@ -92,9 +93,19 @@ public class CensusAnalyser {
         }
         Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.areaInSqKm);
         this.sort(censusCSVComparator.reversed());
-        String sortedStateCensus = new Gson().toJson(censusCSVList);
-        this.jsonWriter(sortedStateCensus,REVERSED_AREA_JSON);
-        return sortedStateCensus;
+        String reversedAreaCensus = new Gson().toJson(censusCSVList);
+        this.jsonWriter(reversedAreaCensus,REVERSED_AREA_JSON);
+        return reversedAreaCensus;
+    }
+    public String getReversedDensityWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing(census -> census.densityPerSqKm);
+        this.sort(censusCSVComparator.reversed());
+        String reversedDensityCensus = new Gson().toJson(censusCSVList);
+        this.jsonWriter(reversedDensityCensus,REVERSED_DENSITY_JSON);
+        return reversedDensityCensus;
     }
     public void jsonWriter(String jsonString, String filePath) throws CensusAnalyserException {
         try (FileWriter writer = new FileWriter(filePath)) {
