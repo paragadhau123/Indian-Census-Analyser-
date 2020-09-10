@@ -18,7 +18,7 @@ public class CensusAnalyser {
     public CensusAnalyser() {
         this.Map = new HashMap<>();
     }
-
+//Generics
     public <E> int loadCensusData(String csvFilePath, Class<E> censusCSVClass) throws CensusAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
