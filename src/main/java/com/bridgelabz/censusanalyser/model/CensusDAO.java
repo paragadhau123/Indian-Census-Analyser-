@@ -1,6 +1,6 @@
 package com.bridgelabz.censusanalyser.model;
 
-public class IndiaCensusDAO  {
+public class CensusDAO {
     public int srNo;
     public int tin;
     public String stateCode;
@@ -10,14 +10,14 @@ public class IndiaCensusDAO  {
     public int area;
     public String state;
 
-    public IndiaCensusDAO(IndiaCensusCSV indiaCensusCSV) {
+    public CensusDAO(IndiaCensusCSV indiaCensusCSV) {
         state = indiaCensusCSV.state;
         area = indiaCensusCSV.areaInSqKm;
         population = indiaCensusCSV.population;
         densityPerSqKm = indiaCensusCSV.densityPerSqKm;
     }
 
-    public IndiaCensusDAO(IndiaStateCodeCSV indiaStateCodeCSV) {
+    public CensusDAO(IndiaStateCodeCSV indiaStateCodeCSV) {
         stateName = indiaStateCodeCSV.stateName;
         stateCode = indiaStateCodeCSV.stateCode;
         tin = indiaStateCodeCSV.tin;
