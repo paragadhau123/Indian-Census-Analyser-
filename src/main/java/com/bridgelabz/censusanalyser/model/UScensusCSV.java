@@ -33,7 +33,7 @@ public class UScensusCSV {
     @Override
     public String toString() {
         return "USCensusCSV{" +
-                "stateID='" + stateID + '\'' +
+                "state ID='" + stateID + '\'' +
                 ", state='" + state + '\'' +
                 ", population=" + population +
                 ", housingUnits=" + housingUnits +
