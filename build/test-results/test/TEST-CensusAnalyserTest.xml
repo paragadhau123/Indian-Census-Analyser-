@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-08T17:35:21" hostname="DESKTOP-E8Q152A" time="0.203">
+<testsuite name="CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-09-14T19:44:40" hostname="DESKTOP-E8Q152A" time="0.035">
   <properties/>
-  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="CensusAnalyserTest" time="0.203"/>
-  <system-out><![CDATA[Error parsing CSV line: 29, values: null
-]]></system-out>
-  <system-err><![CDATA[Exception in thread "pool-1-thread-5" java.lang.RuntimeException: com.opencsv.exceptions.CsvRequiredFieldEmptyException: The following required fields were not present for one record of the input: areaInSqKm densityPerSqKm
-	at com.opencsv.bean.concurrent.ProcessCsvLine.run(ProcessCsvLine.java:91)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-Caused by: com.opencsv.exceptions.CsvRequiredFieldEmptyException: The following required fields were not present for one record of the input: areaInSqKm densityPerSqKm
-	at com.opencsv.bean.HeaderColumnNameMappingStrategy.verifyLineLength(HeaderColumnNameMappingStrategy.java:148)
-	at com.opencsv.bean.concurrent.ProcessCsvLine.processLine(ProcessCsvLine.java:122)
-	at com.opencsv.bean.concurrent.ProcessCsvLine.run(ProcessCsvLine.java:82)
-	... 3 more
-]]></system-err>
+  <testcase name="givenIndianStateCodeData_WhenSortedOnStateCode_ShouldReturnSortResult" classname="CensusAnalyserTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,0 +1,3 @@
+public enum CensusStats {
+    INDIAN_CENSUS_STATS, INDIAN_STATE_CODE_STATS, US_CENSUS_STATS
+}

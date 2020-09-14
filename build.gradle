@@ -14,5 +14,11 @@ dependencies {
 }
 dependencies {
     compile "com.opencsv:opencsv:4.0"
+}
 
+dependencies {
+    compile 'com.google.code.gson:gson:2.2.+'
+}
+dependencies {
+    compile(files("D:\\parag\\Fellowship\\Indian-Census-Analyser-\\gradle\\lib\\CSVBuilder.jar"))
 }
